@@ -10,6 +10,11 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import djcelery
+from datetime import timedelta
+
+
+djcelery.setup_loader()
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -37,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'yoshikawa_alarm',
+    'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,3 +95,12 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_IMPORTS = ('yoshikawa_alarm.tasks', )
+CELERY_ZONE = 'Asia/Tokyo'
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+CELERYBEAT_SCHEDULE = {
+    'test-periodic-task': {
+        'task': 'yoshikawa_alarm.tasks.add',
+        'schedule': timedelta(seconds=10),
+        'args': (16, 16),
+    }
+}
