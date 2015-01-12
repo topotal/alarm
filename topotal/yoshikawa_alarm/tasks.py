@@ -2,10 +2,13 @@ from __future__ import absolute_import
 
 import datetime
 from celery.task.base import periodic_task
+from celery import shared_task
 from yoshikawa_alarm.models import Schedule
+import mp3play
+import time
 
 
-@periodic_task(run_every=datetime.timedelta(seconds=5))
+@periodic_task(run_every=datetime.timedelta(seconds=15))
 def watch_schedule():
     now = datetime.datetime.now()
     schedules = Schedule.objects.all()
@@ -21,5 +24,16 @@ def watch_schedule():
 
     if start_flg:
         print "start alarm"
+        play_music.delay()
     if target_schedule and not target_schedule.weekly_flg:
         target_schedule.delete()
+
+
+@shared_task
+def play_music():
+    filename = "../lovelive.mp3"
+    mp3 = mp3play.load(filename)
+    mp3.play()
+    time.sleep(5)
+    mp3.stop()
+    print "end"
