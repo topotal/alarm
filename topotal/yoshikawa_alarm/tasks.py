@@ -4,7 +4,7 @@ import datetime
 from celery.task.base import periodic_task
 from celery import shared_task
 from yoshikawa_alarm.models import Schedule
-import mp3play
+import pygame.mixer
 import time
 
 
@@ -31,9 +31,8 @@ def watch_schedule():
 
 @shared_task
 def play_music():
-    filename = "../lovelive.mp3"
-    mp3 = mp3play.load(filename)
-    mp3.play()
+    pygame.mixer.init()
+    pygame.mixer.music.load("yoshikawa_alarm/static/lovelive.mp3")
     time.sleep(5)
-    mp3.stop()
+    pygame.mixer.music.stop()
     print "end"

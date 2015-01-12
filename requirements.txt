@@ -1,3 +1,4 @@
+APScheduler==3.0.1
 Django==1.7.2
 amqp==1.4.6
 anyjson==0.3.3
@@ -12,6 +13,7 @@ gnureadline==6.3.3
 ipython==2.3.1
 jedi==0.8.1-final0
 kombu==3.0.24
+pygame==1.9.2a0
 pytz==2014.10
 redis==2.10.3
 six==1.9.0

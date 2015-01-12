@@ -33,3 +33,12 @@ workon yoshikawa_alarm
 ```
 pip install -r requirements.txt
 ```
+
+## install pygame on OSX
+
+```
+brew tap homebrew/headonly
+brew install smpeg --HEAD
+brew install sdl sdl_image sdl_mixer sdl_ttf portmidi
+pip install hg+http://bitbucket.org/pygame/pygame
+```
