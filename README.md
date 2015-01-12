@@ -17,7 +17,7 @@ pythonz install 2.7.9
 ```
 
 
-##Virtualenv
+## Virtualenv
 
 ```
 sudo apt-get install python-virtualenv virtualenvwrapper
@@ -26,4 +26,10 @@ sudo apt-get install python-virtualenv virtualenvwrapper
 ```
 mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distribute yoshikawa_alarm
 workon yoshikawa_alarm
+```
+
+## Package Install
+
+```
+pip install -r requirements.txt
 ```
