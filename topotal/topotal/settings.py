@@ -97,10 +97,3 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_IMPORTS = ('yoshikawa_alarm.tasks', )
 CELERY_ZONE = 'Asia/Tokyo'
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
-CELERYBEAT_SCHEDULE = {
-    'test-periodic-task': {
-        'task': 'yoshikawa_alarm.tasks.add',
-        'schedule': timedelta(seconds=10),
-        'args': (16, 16),
-    }
-}
