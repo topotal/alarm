@@ -33,6 +33,7 @@ def watch_schedule():
 def play_music():
     pygame.mixer.init()
     pygame.mixer.music.load("yoshikawa_alarm/static/lovelive.mp3")
+    pygame.mixer.music.play()
     time.sleep(5)
     pygame.mixer.music.stop()
     print "end"
