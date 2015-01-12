@@ -42,3 +42,13 @@ brew install smpeg --HEAD
 brew install sdl sdl_image sdl_mixer sdl_ttf portmidi
 pip install hg+http://bitbucket.org/pygame/pygame
 ```
+
+## install pygame on Ubuntu
+
+```
+apt-get install libsdl-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev 
+apt-get install libsmpeg-dev libportmidi-dev libavformat-dev libswscale-dev
+apt-get install libv4l-dev
+cd /usr/include/linux
+sudo ln -s ../libv4l1-videodev.h videodev.h
+```
