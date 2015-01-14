@@ -6,11 +6,12 @@ from django.utils import timezone
 import datetime
 import pytz
 from datetime import timedelta
+from django.core.cache import cache
 
 # Create your views here.
 
 
-def hello(request):
+def register(request):
     hour = request.GET["hour"]
     minute = request.GET["minute"]
 
@@ -25,3 +26,8 @@ def hello(request):
         return HttpResponse("OK")
 
     return HttpResponse("Unknown Error")
+
+
+def stop(request):
+    cache.delete("alarm_key")
+    return HttpResponse("OK")
