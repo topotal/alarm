@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from django.contrib import admin
 
 
 class Schedule(models.Model):
@@ -11,6 +12,9 @@ class Schedule(models.Model):
     weekly_flg = models.BooleanField(verbose_name=u"毎週かどうか",
                                      default=False)
 
+    def __unicode__(self):
+	return unicode(":".join([str(self.hour), str(self.minute)]))
+
     @classmethod
     def set_alarm(cls, hour, minute):
         obj = cls.objects.create(hour=hour, minute=minute)
@@ -20,3 +24,5 @@ class Schedule(models.Model):
     @classmethod
     def is_exists(cls, hour, minute):
         return cls.objects.filter(hour=hour, minute=minute).exists()
+
+admin.site.register(Schedule)

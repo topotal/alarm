@@ -271,20 +271,21 @@ def main():
     r = redis.Redis(connection_pool=pool)
 
     while 1:
-        nowTime = datetime.now() #.strftime("%Y/%m/%d %H:%M:%S")
         if GPIO.input(17):
+            nowTime = datetime.now() #.strftime("%Y/%m/%d %H:%M:%S")
             lcd.string(nowTime.strftime("%Y-%m-%d"),1)
         else:
-            lcd.string(get_ip_address('eth0'),1)
+            lcd.string(get_ip_address('wlan0'),1)
         if GPIO.input(18):
+            nowTime = datetime.now() #.strftime("%Y/%m/%d %H:%M:%S")
             lcd.string(nowTime.strftime("%H:%M:%S"),2)
         else:
             alarm_key = r.get(':1:alarm_key')
             if alarm_key:
-                lcd.string(unicode(alarm_key), 2)
+                lcd.string(alarm_key, 2)
             else:
                 lcd.string(u"YOSHIKAWA Alarm",2)
-        time.sleep(0.2)
+        time.sleep(0.3)
 
     # This program must run as "root" user like this.
     # $ sudo python lcd.py

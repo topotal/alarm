@@ -36,6 +36,7 @@ def watch_schedule():
 @shared_task
 def start_music():
     pygame.mixer.init()
+    pygame.mixer.music.set_volume(10.0)
     pygame.mixer.music.load("yoshikawa_alarm/static/lovelive.mp3")
     pygame.mixer.music.play()
 
@@ -43,6 +44,7 @@ def start_music():
 	time.sleep(1)
 
     pygame.mixer.music.stop()
+    pygame.mixer.quit()
 
 
 def generate_alarm_key():
