@@ -9,6 +9,7 @@ import pygame.mixer
 import time
 import redis
 import random
+import os
 
 
 @periodic_task(run_every=datetime.timedelta(seconds=60))
@@ -36,15 +37,36 @@ def watch_schedule():
 @shared_task
 def start_music():
     pygame.mixer.init()
-    pygame.mixer.music.set_volume(10.0)
-    pygame.mixer.music.load("yoshikawa_alarm/static/lovelive.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.set_volume(0.5)
+    base_dir = "yoshikawa_alarm/music"
+    filename_list = ["lovelive.mp3", "warning.wav", 
+                     "critical.wav", "hostdown.wav", "sayonara_bus.mp3"]
+    play_list = []
 
-    while cache.get('alarm_key'):
-	time.sleep(1)
+    for filename in filename_list:
+        play_list.append(os.path.join(base_dir, filename))
+
+    for music in play_list:
+	pygame.mixer.music.load(music)
+	pygame.mixer.music.play(-1)
+
+	play_time = 0
+        while is_sleeping() and play_time < 60:
+            play_time += 1
+    	    time.sleep(1)
+
+        if is_sleeping():
+            pygame.mixer.music.stop()
+            continue
+        else:
+            break
 
     pygame.mixer.music.stop()
     pygame.mixer.quit()
+
+
+def is_sleeping():
+    return (cache.get('alarm_key') is not None)
 
 
 def generate_alarm_key():

@@ -7,7 +7,7 @@ class Schedule(models.Model):
 
     """Schedule is representations of schedule the alarm."""
 
-    hour = models.IntegerField(verbose_name=u"秒")
+    hour = models.IntegerField(verbose_name=u"時")
     minute = models.IntegerField(verbose_name=u"分")
     weekly_flg = models.BooleanField(verbose_name=u"毎週かどうか",
                                      default=False)
