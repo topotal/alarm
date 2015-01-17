@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
@@ -15,13 +16,13 @@ import json
 
 def get_schedule(request):
     has_schdule = Schedule.is_exists()
+    response = dict()
     if has_schdule:
         schedule = Schedule.objects.all()
         _json = serializers.serialize('json', schedule, ensure_ascii=False)
         return HttpResponse(_json, content_type='application/json')
     else:
-        response["message"] = "Page Not Found."
-        return HttpResponseNotFound(json.dumps(response), content_type='application/json')
+        return HttpResponse('[{"message": "None"}]', content_type='application/json')
     
 
 def set(request):
@@ -46,18 +47,15 @@ def set(request):
                            repeat_tuesday, repeat_wednesday, repeat_thursday,
                            repeat_friday, repeat_saturday)
         print hour, minute, repeat_sunday, repeat_monday
-        response["message"] = "OK"
-        return HttpResponse(json.dumps(response), content_type='application/json')
+        return HttpResponse('[{"message": "OK"}]', content_type='application/json')
     else:
         Schedule.create_alarm(hour, minute, repeat_sunday, repeat_monday,
                            repeat_tuesday, repeat_wednesday, repeat_thursday,
                            repeat_friday, repeat_saturday)
 
-        response["message"] = "OK"
-        return HttpResponse(json.dumps(response), content_type='application/json')
+        return HttpResponse('[{"message": "OK"}]', content_type='application/json')
 
-    response["message"] = "Page Not Found."
-    return HttpResponseNotFound(json.dumps(response), content_type='application/json')
+    return HttpResponseNotFound('[{"message": "Page Not Found."}]', content_type='application/json')
 
 
 def stop(request):
@@ -67,5 +65,4 @@ def stop(request):
         response["message"] = "OK"
         return HttpResponse(json.dumps(response), content_type='application/json')
     else:
-        response["message"] = "Page Not Found."
-        return HttpResponseNotFound(json.dumps(response), content_type='application/json')
+        return HttpResponseNotFound('[{"message": "違いまっせ"}]', content_type='application/json')

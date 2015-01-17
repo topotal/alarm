@@ -51,8 +51,8 @@ def watch_schedule():
             cache.set('alarm_key', alarm_key)
             start_music.delay()
 
-        if not has_repeat_flg:
-            schedule.delete()
+            if not has_repeat_flg:
+                schedule.delete()
 
 
 @shared_task
