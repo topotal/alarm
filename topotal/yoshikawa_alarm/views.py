@@ -18,7 +18,7 @@ def get_schedule(request):
     if has_schdule:
         schedule = Schedule.objects.all()
         _json = serializers.serialize('json', schedule, ensure_ascii=False)
-        return HttpResponseNotFound(_json, content_type='application/json')
+        return HttpResponse(_json, content_type='application/json')
     else:
         response["message"] = "Page Not Found."
         return HttpResponseNotFound(json.dumps(response), content_type='application/json')
