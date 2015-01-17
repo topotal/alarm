@@ -10,6 +10,7 @@ urlpatterns = patterns('',
                        )
 
 urlpatterns += patterns('yoshikawa_alarm.views',
-                        url(r'^register/', 'register'),
+                        url(r'^schedule/', 'get_schedule'),
+                        url(r'^set/', 'set'),
                         url(r'^stop/', 'stop'),
                         )

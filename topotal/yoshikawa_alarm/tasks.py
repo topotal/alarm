@@ -15,23 +15,44 @@ import os
 @periodic_task(run_every=datetime.timedelta(seconds=60))
 def watch_schedule():
     now = datetime.datetime.now()
-    schedules = Schedule.objects.all()
-    start_flg = False
-    target_schedule = None
-    for s in schedules:
-        print "%s:%s %s:%s" % (s.hour, s.minute,
-                               now.hour, now.minute)
-        if s.hour is now.hour and s.minute is now.minute:
-            start_flg = True
-            target_schedule = s
+    weekday = now.weekday()
+    has_schdule = Schedule.is_exists()
+    if has_schdule:
+        schedule = Schedule.objects.all().get()
+        repeat_flg_list = []
+        play_flg = False
+        target_schedule = None
 
-    if start_flg:
-        alarm_key = generate_alarm_key()
-        print alarm_key
-        cache.set('alarm_key', alarm_key)
-        start_music.delay()
-    if target_schedule and not target_schedule.weekly_flg:
-        target_schedule.delete()
+        repeat_flg_list.append(schedule.repeat_monday)
+        repeat_flg_list.append(schedule.repeat_tuesday)
+        repeat_flg_list.append(schedule.repeat_wednesday)
+        repeat_flg_list.append(schedule.repeat_thursday)
+        repeat_flg_list.append(schedule.repeat_friday)
+        repeat_flg_list.append(schedule.repeat_saturday)
+        repeat_flg_list.append(schedule.repeat_sunday)
+
+        has_repeat_flg = False
+        for repeat_flg in repeat_flg_list:
+            if repeat_flg:
+                has_repeat_flg = True
+                break
+
+        if schedule.hour is now.hour and schedule.minute is now.minute:
+            if has_repeat_flg:
+                if repeat_flg_list[weekday]:
+                    play_flg = True
+            else:
+                play_flg = True
+                target_schedule = schedule
+
+        if play_flg:
+            alarm_key = generate_alarm_key()
+            print alarm_key
+            cache.set('alarm_key', alarm_key)
+            start_music.delay()
+
+        if not has_repeat_flg:
+            schedule.delete()
 
 
 @shared_task
