@@ -1,8 +1,5 @@
 # 環境構築
 
-Python: 2.7.9
-Django: 1.7.2
-
 ## Pythonz 
 
 ```
