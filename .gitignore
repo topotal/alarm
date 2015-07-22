@@ -4,3 +4,4 @@ db.sqlite3
 *.mp3
 *.wav
 !pygame_sample_file.wav
+frontend/build
