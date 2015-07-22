@@ -1,4 +1,10 @@
-# 環境構築
+# よしかわアラーム(Yoshikawa-Alarm)
+
+よしかわアラーム is a birthday present for [@rrreeeyyy](https://twitter.com/rrreeeyyy).
+This codes work with The Raspberry Pi.
+
+
+# Installation
 
 ## Pythonz 
 
@@ -49,3 +55,8 @@ apt-get install libv4l-dev
 cd /usr/include/linux
 sudo ln -s ../libv4l1-videodev.h videodev.h
 ```
+
+
+## License
+
+GNU General Public License Version 2
