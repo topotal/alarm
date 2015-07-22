@@ -3,6 +3,7 @@
 よしかわアラーム is a birthday present for [@rrreeeyyy](https://twitter.com/rrreeeyyy).
 This codes work with The Raspberry Pi.
 
+![よしかわあらーむ](./images/main.png)
 
 # Installation
 
