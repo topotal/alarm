@@ -60,4 +60,4 @@ sudo ln -s ../libv4l1-videodev.h videodev.h
 
 ## License
 
-GNU General Public License Version 2
+よしかわアラーム is released under the [MIT License](http://www.opensource.org/licenses/MIT).
