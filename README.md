@@ -57,6 +57,14 @@ cd /usr/include/linux
 sudo ln -s ../libv4l1-videodev.h videodev.h
 ```
 
+## install supervisor
+
+```
+apt-get install supervisor
+cp ./config/supervisord/*.conf /etc/supervisor.d/
+service supervisor restart
+```
+
 
 ## License
 
