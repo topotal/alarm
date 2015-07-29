@@ -32,7 +32,7 @@ mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distrib
 workon yoshikawa_alarm
 ```
 
-## Package Install
+## Install Python Packages
 
 ```
 pip install -r requirements.txt
