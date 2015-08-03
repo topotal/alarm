@@ -7,7 +7,6 @@ from yoshikawa_alarm.models import Schedule
 from django.core.cache import cache
 import pygame.mixer
 import time
-import redis
 import random
 import os
 
@@ -21,7 +20,7 @@ def watch_schedule():
         schedule = Schedule.objects.all().get()
         repeat_flg_list = []
         play_flg = False
-        target_schedule = None
+#        target_schedule = None
 
         repeat_flg_list.append(schedule.repeat_monday)
         repeat_flg_list.append(schedule.repeat_tuesday)
@@ -43,7 +42,7 @@ def watch_schedule():
                     play_flg = True
             else:
                 play_flg = True
-                target_schedule = schedule
+#                target_schedule = schedule
 
         if play_flg:
             alarm_key = generate_alarm_key()
@@ -68,13 +67,13 @@ def start_music():
         play_list.append(os.path.join(base_dir, filename))
 
     for music in play_list:
-	pygame.mixer.music.load(music)
-	pygame.mixer.music.play(-1)
+        pygame.mixer.music.load(music)
+        pygame.mixer.music.play(-1)
 
-	play_time = 0
+        play_time = 0
         while is_sleeping() and play_time < 60:
             play_time += 1
-    	    time.sleep(1)
+            time.sleep(1)
 
         if is_sleeping():
             pygame.mixer.music.stop()
