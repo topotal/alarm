@@ -47,7 +47,7 @@ def watch_schedule():
         if play_flg:
             alarm_key = generate_alarm_key()
             print alarm_key
-            cache.set('alarm_key', alarm_key["result"])
+            cache.set('alarm_key', alarm_key)
             start_music.delay()
 
             if not has_repeat_flg:
