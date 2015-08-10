@@ -63,7 +63,7 @@ class HD44780(object):
     LCD_CMD = False
 
     LCD_LINE_1 = 0x80 # LCD RAM address for the 1st line
-    LCD_LINE_2 = 0xC0 # LCD RAM address for the 2nd line 
+    LCD_LINE_2 = 0xC0 # LCD RAM address for the 2nd line
 
     # Timing constants
     E_PULSE = 0.00005
@@ -105,7 +105,7 @@ class HD44780(object):
         else:
             raise AttributeError, "Please set correct column (1 or 2)."
         self.byte(line, self.LCD_CMD)
-        message = message.ljust(self.LCD_WIDTH," ")  
+        message = message.ljust(self.LCD_WIDTH," ")
         for i in range(self.LCD_WIDTH):
             # English
             if self.re_en.match(message[i]):
@@ -122,7 +122,7 @@ class HD44780(object):
                         JapaneseCharacter.zen_to_han[u'゛'],
                         self.LCD_CHR
                         )
-                elif message[i] in JapaneseCharacter.handakuon: 
+                elif message[i] in JapaneseCharacter.handakuon:
                     self.byte(
                         JapaneseCharacter.zen_to_han[u'゜'],
                         self.LCD_CHR
@@ -155,9 +155,9 @@ class HD44780(object):
 
         # Toggle 'Enable' pin
         time.sleep(self.E_DELAY)
-        GPIO.output(self.LCD_E, True)  
+        GPIO.output(self.LCD_E, True)
         time.sleep(self.E_PULSE)
-        GPIO.output(self.LCD_E, False)  
+        GPIO.output(self.LCD_E, False)
         time.sleep(self.E_DELAY)
 
         # Low bits
@@ -175,10 +175,10 @@ class HD44780(object):
             GPIO.output(self.LCD_D7, True)
 
         # Toggle 'Enable' pin
-        time.sleep(self.E_DELAY)    
-        GPIO.output(self.LCD_E, True)  
+        time.sleep(self.E_DELAY)
+        GPIO.output(self.LCD_E, True)
         time.sleep(self.E_PULSE)
-        GPIO.output(self.LCD_E, False)  
+        GPIO.output(self.LCD_E, False)
         time.sleep(self.E_DELAY)
         return
 
@@ -264,7 +264,7 @@ def main():
     # [How to use]
     # 1. Initialize
     lcd = HD44780()
-    # 2. Call string method 
+    # 2. Call string method
     from datetime import datetime
 
     pool = redis.ConnectionPool(host='localhost', port=6379, db=1)
@@ -280,7 +280,8 @@ def main():
         else:
             alarm_key = r.get(':1:alarm_key')
             if alarm_key:
-                lcd.string(alarm_key, 1)
+                number = " x ".join(alarm_key["num1"], alarm_key["num2"])
+                lcd.string(number, 1)
             else:
                 nowTime = datetime.now()
                 lcd.string(nowTime.strftime("%Y-%m-%d"),1)
@@ -288,7 +289,7 @@ def main():
 
     # This program must run as "root" user like this.
     # $ sudo python lcd.py
- 
+
     # If string over 16 chars, it cut off.
     # Notice: "が" is 2 chars. ("か" + "゛")
 
