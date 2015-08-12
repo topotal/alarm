@@ -30,8 +30,8 @@ apt-get install python-virtualenv virtualenvwrapper
 
 ```
 sudo su -
-mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distribute yoshikawa_alarm
-workon yoshikawa_alarm
+mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distribute alarm
+workon alarm
 ```
 
 ## Install Python Packages
