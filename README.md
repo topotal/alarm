@@ -24,17 +24,23 @@ pythonz install 2.7.9
 ## Virtualenv
 
 ```
-sudo apt-get install python-virtualenv virtualenvwrapper
+sudo su -
+apt-get install python-virtualenv virtualenvwrapper
 ```
 
 ```
-mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distribute yoshikawa_alarm
-workon yoshikawa_alarm
+sudo su -
+mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distribute alarm
+workon alarm
 ```
 
 ## Install Python Packages
 
 ```
+sudo su -
+cd /opt
+git clone https://github.com/topotal/alarm.git
+cd alarm
 pip install -r requirements.txt
 ```
 
@@ -50,17 +56,19 @@ pip install hg+http://bitbucket.org/pygame/pygame
 ## install pygame on Ubuntu
 
 ```
+sudo su -
 apt-get install libsdl-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev 
 apt-get install libsmpeg-dev libportmidi-dev libavformat-dev libswscale-dev
 apt-get install libv4l-dev
 cd /usr/include/linux
-sudo ln -s ../libv4l1-videodev.h videodev.h
+ln -s ../libv4l1-videodev.h videodev.h
 ```
 
 ## install supervisor
 
 ```
 apt-get install supervisor
+cd /opt/alarm
 cp ./config/supervisord/*.conf /etc/supervisor.d/
 service supervisor restart
 ```
