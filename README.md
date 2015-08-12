@@ -44,7 +44,7 @@ pip install -r requirements.txt
 ```
 apt-get install -y supervisor
 cd /opt/alarm
-cp ./config/supervisord/*.conf /etc/supervisor.d
+cp ./config/supervisord/*.conf /etc/supervisor/conf.d/
 service supervisor restart
 ```
 
