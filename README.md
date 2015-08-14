@@ -63,7 +63,20 @@ brew install smpeg --HEAD
 brew install sdl sdl_image sdl_mixer sdl_ttf portmidi
 pip install hg+http://bitbucket.org/pygame/pygame
 ```
+## install supervisor
 
+```
+apt-get install supervisor
+cd /opt/alarm
+cp ./config/supervisord/*.conf /etc/supervisor.d/
+service supervisor restart
+```
+
+## install redis
+
+```
+apt-get install redis-server
+```
 
 ## License
 
