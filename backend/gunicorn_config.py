@@ -1,5 +1,5 @@
 command = '/root/.virtualenvs/alarm/bin/gunicorn'
-pythonpath = '/opt/alarm/topotal'
+pythonpath = '/opt/alarm/backend'
 bind = '0.0.0.0:5000'
 workers = 1
 user = 'root'
