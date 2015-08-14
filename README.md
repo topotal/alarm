@@ -72,7 +72,20 @@ cd /opt/alarm
 cp ./config/supervisord/*.conf /etc/supervisor.d/
 service supervisor restart
 ```
+## install supervisor
 
+```
+apt-get install supervisor
+cd /opt/alarm
+cp ./config/supervisord/*.conf /etc/supervisor.d/
+service supervisor restart
+```
+
+## install redis
+
+```
+apt-get install redis-server
+```
 
 ## License
 
