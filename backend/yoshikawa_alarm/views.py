@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
-from yoshikawa_alarm.models import Schedule
+from alarm.models import Schedule
 from django.utils import timezone
 import datetime
 import pytz

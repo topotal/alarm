@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'yoshikawa_alarm',
+    'alarm',
     'djcelery',
 )
 
@@ -91,14 +91,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'yoshikawa_alarm/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'alarm/static')
 
 BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT = ['json']
-CELERY_IMPORTS = ('yoshikawa_alarm.tasks', )
+CELERY_IMPORTS = ('alarm.tasks', )
 CELERY_ZONE = 'Asia/Tokyo'
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 

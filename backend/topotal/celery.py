@@ -8,13 +8,13 @@ from django.conf import settings
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'topotal.settings')
 
-app = Celery('yoshikawa_alarm')
+app = Celery('alarm')
 
 app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 #app.conf.update(
-#    CELERY_IMPORTS=("yoshikawa_alarm.tasks", )
+#    CELERY_IMPORTS=("alarm.tasks", )
 #)
 
 @app.task(bind=True)

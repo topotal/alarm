@@ -1,5 +1,5 @@
-command = '/root/.virtualenvs/yoshikawa_alarm/bin/gunicorn'
-pythonpath = '/opt/yoshikawa_alarm/topotal'
+command = '/root/.virtualenvs/alarm/bin/gunicorn'
+pythonpath = '/opt/alarm/topotal'
 bind = '0.0.0.0:5000'
 workers = 1
 user = 'root'
