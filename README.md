@@ -21,7 +21,7 @@ pythonz install 2.7.9
 ```
 
 
-## Virtualenv
+## install virtualenv
 
 ```
 sudo su -
@@ -30,7 +30,7 @@ mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distrib
 workon alarm
 ```
 
-## Install Python Packages
+## install Python Packages
 
 ```
 cd /opt
@@ -78,6 +78,13 @@ service supervisor restart
 apt-get install redis-server
 ```
 
+## install nginx
+
+```
+apt-get install nginx
+cp ./config/nginx/alarm.conf /etc/nginx/conf.d/
+service nginx restart
+```
 ## License
 
 よしかわアラーム is released under the [MIT License](http://www.opensource.org/licenses/MIT).
