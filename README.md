@@ -21,7 +21,7 @@ pythonz install 2.7.9
 ```
 
 
-## install virtualenv
+## Virtualenv
 
 ```
 sudo su -
@@ -30,7 +30,7 @@ mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distrib
 workon alarm
 ```
 
-## install Python Packages
+## Python Packages
 
 ```
 cd /opt
@@ -39,7 +39,7 @@ cd alarm
 pip install -r requirements.txt
 ```
 
-## install supervisor
+## Supervisor
 
 ```
 apt-get install -y supervisor
@@ -48,7 +48,7 @@ cp ./config/supervisord/*.conf /etc/supervisor/conf.d/
 service supervisor restart
 ```
 
-## install pygame on Ubuntu
+## Pygame on Ubuntu
 
 ```
 apt-get install -y libsdl-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsmpeg-dev libportmidi-dev libavformat-dev libswscale-dev libv4l-dev
@@ -56,35 +56,27 @@ cd /usr/include/linux
 ln -s ../libv4l1-videodev.h videodev.h
 ```
 
-## install pygame on OSX 
+## Pygame on OSX 
 ```
 brew tap homebrew/headonly
 brew install smpeg --HEAD
 brew install sdl sdl_image sdl_mixer sdl_ttf portmidi
 pip install hg+http://bitbucket.org/pygame/pygame
 ```
-## install supervisor
 
-```
-apt-get install supervisor
-cd /opt/alarm
-cp ./config/supervisord/*.conf /etc/supervisor.d/
-service supervisor restart
-```
-
-## install redis
+## Redis
 
 ```
 apt-get install redis-server
 ```
 
-## install nginx
+## Nginx
 
 ```
 apt-get install nginx
 cp ./config/nginx/alarm.conf /etc/nginx/conf.d/
 service nginx restart
 ```
-## License
+# License
 
 よしかわアラーム is released under the [MIT License](http://www.opensource.org/licenses/MIT).
