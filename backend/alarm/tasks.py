@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import datetime
 from celery.task.base import periodic_task
 from celery import shared_task
-from yoshikawa_alarm.models import Schedule
+from alarm.models import Schedule
 from django.core.cache import cache
 import pygame.mixer
 import time
@@ -58,7 +58,7 @@ def watch_schedule():
 def start_music():
     pygame.mixer.init()
     pygame.mixer.music.set_volume(0.5)
-    base_dir = "yoshikawa_alarm/music"
+    base_dir = "alarm/music"
     filename_list = ["lovelive.mp3", "warning.wav",
                      "critical.wav", "hostdown.wav", "sayonara_bus.mp3"]
     play_list = []

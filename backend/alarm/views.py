@@ -1,6 +1,6 @@
 # coding: utf-8
 from django.http import HttpResponse, HttpResponseNotFound
-from yoshikawa_alarm.models import Schedule
+from alarm.models import Schedule
 from django.core.cache import cache
 from django.core import serializers
 import json

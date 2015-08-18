@@ -1,9 +1,9 @@
 #!/bin/sh
 
 BASE_DIR="/root"
-PYTHONPATH="$BASE_DIR/.virtualenvs/yoshikawa_alarm/bin/python"
+PYTHONPATH="$BASE_DIR/.virtualenvs/alarm/bin/python"
 PATH="$PYTHONPATH:$PATH:$BASE_DIR/bin"
 
-cd /opt/yoshikawa_alarm/topotal
-export PATH="$BASE_DIR/.virtualenvs/yoshikawa_alarm/bin:$PATH"
+cd /opt/alarm/backend
+export PATH="$BASE_DIR/.virtualenvs/alarm/bin:$PATH"
 exec "$@"

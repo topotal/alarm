@@ -9,7 +9,7 @@ urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        )
 
-urlpatterns += patterns('yoshikawa_alarm.views',
+urlpatterns += patterns('alarm.views',
                         url(r'^schedule/', 'get_schedule'),
                         url(r'^set/', 'set'),
                         url(r'^stop/', 'stop'),
