@@ -278,9 +278,9 @@ def main():
         elif GPIO.input(18):
             lcd.string(u"YOSHIKAWA Alarm",1)
         else:
-            alarm_key = r.get(':1:alarm_key')
+            alarm_key = r.hmget('alarm_key', 'num1', 'num2')
             if alarm_key:
-                number = " x ".join(alarm_key["num1"], alarm_key["num2"])
+                number = " x ".join(alarm_key)
                 lcd.string(number, 1)
             else:
                 nowTime = datetime.now()
