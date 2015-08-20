@@ -4,6 +4,7 @@ from alarm.models import Schedule
 from django.core.cache import cache
 from django.core import serializers
 import json
+import redis
 
 
 # Create your views here.
@@ -51,8 +52,10 @@ def set(request):
 
 def stop(request):
     response = dict()
-    if int(request.POST["alarm_key"]) == cache.get("alarm_key"):
-        cache.delete("alarm_key")
+    pool = redis.ConnectionPool(host='localhost', port=6379, db=1)
+    r = redis.Redis(connection_pool=pool)
+    if request.POST["alarm_key"] == r.hget("alarm_key", "result"):
+        r.hdel("alarm_key", "result")
         response["message"] = "OK"
         return HttpResponse(json.dumps(response), content_type='application/json')
     else:
