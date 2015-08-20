@@ -91,10 +91,12 @@ def start_music():
 def is_sleeping(r):
     return r.hexists('alarm_key', 'result')
 
+
 def generate_random_number():
     source_string = '123456789'
     random_number = int("".join([random.choice(source_string) for x in xrange(2)]))
     return random_number
+
 
 def generate_alarm_key():
     while 1:
