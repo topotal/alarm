@@ -55,7 +55,7 @@ def stop(request):
     pool = redis.ConnectionPool(host='localhost', port=6379, db=1)
     r = redis.Redis(connection_pool=pool)
     if request.POST["alarm_key"] == r.hget("alarm_key", "result"):
-        r.hdel("alarm_key", "result")
+        r.delete("alarm_key")
         response["message"] = "OK"
         return HttpResponse(json.dumps(response), content_type='application/json')
     else:
