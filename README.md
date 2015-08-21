@@ -1,4 +1,4 @@
-# よしかわアラーム(Yoshikawa-Alarm)
+# よしかわアラーム（Yoshikawa-Alarm）
 
 よしかわアラーム is a birthday present for [@rrreeeyyy](https://twitter.com/rrreeeyyy).
 This codes work with The Raspberry Pi.
@@ -20,7 +20,6 @@ echo '  [[ -s /usr/local/pythonz/etc/bashrc ]] && source /usr/local/pythonz/etc/
 pythonz install 2.7.9
 ```
 
-
 ## Virtualenv
 
 ```
@@ -28,15 +27,6 @@ sudo su -
 apt-get install -y python-virtualenv virtualenvwrapper
 mkvirtualenv -p /usr/local/pythonz/pythons/CPython-2.7.9/bin/python2.7 --distribute alarm
 workon alarm
-```
-
-## Python Packages
-
-```
-cd /opt
-git clone https://github.com/topotal/alarm.git
-cd alarm
-pip install -r requirements.txt
 ```
 
 ## Supervisor
@@ -62,6 +52,15 @@ brew tap homebrew/headonly
 brew install smpeg --HEAD
 brew install sdl sdl_image sdl_mixer sdl_ttf portmidi
 pip install hg+http://bitbucket.org/pygame/pygame
+```
+
+## Python Packages
+
+```
+cd /opt
+git clone https://github.com/topotal/alarm.git
+cd alarm
+pip install -r requirements.txt
 ```
 
 ## Redis
